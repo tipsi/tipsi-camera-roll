@@ -1,0 +1,16 @@
+matrix:
+  include:
+    - os: osx
+      language: objective-c
+      osx_image: xcode9.3
+cache:
+  directories:
+    - $HOME/.nvm
+    - $HOME/.npm
+    - $HOME/.cocoapods
+
+before_cache: .travis/before-cache.sh
+before_install: . .travis/before-install.sh
+install: .travis/install.sh
+before_script: .travis/before-ci.sh
+script: .travis/ci.sh

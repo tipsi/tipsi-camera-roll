@@ -1,0 +1,8 @@
+rootProject.name = 'example'
+include ':react-native-fs'
+project(':react-native-fs').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-fs/android')
+
+include ':tipsi-camera-roll'
+project(':tipsi-camera-roll').projectDir = new File(rootProject.projectDir, '../node_modules/tipsi-camera-roll/android')
+
+include ':app'
