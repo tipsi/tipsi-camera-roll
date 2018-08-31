@@ -20,6 +20,7 @@ import testID from './utils/testID'
 const IMAGE_URL = 'https://strv.ghost.io//content/images/2016/08/1200x628.png'
 
 type Props = {};
+
 export default class App extends Component<Props> {
   state = {
     saved: false,
@@ -40,7 +41,7 @@ export default class App extends Component<Props> {
         this.setState({ saved: true })
       })
       .catch((error) => {
-        this.setState({ error })
+        this.setState({ error: error.message })
       })
   }
 
@@ -59,10 +60,10 @@ export default class App extends Component<Props> {
               this.setState({ saved: true })
             })
             .catch((error) => {
-              this.setState({ error })
+              this.setState({ error: error.message })
             })
           })
-          .catch((error) => { this.setState({ error }) })
+          .catch((error) => { this.setState({ error: error.message }) })
   }
 
   saveBase64Handler = () => {
@@ -83,11 +84,11 @@ export default class App extends Component<Props> {
               this.setState({ saved: true })
             })
             .catch((error) => {
-              this.setState({ error })
+              this.setState({ error: error.message })
             })
           })
         })
-        .catch((error) => { this.setState({ error }) })
+        .catch((error) => { this.setState({ error: error.message }) })
   }
 
   render() {
