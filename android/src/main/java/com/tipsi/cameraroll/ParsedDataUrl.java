@@ -1,21 +1,15 @@
 package com.tipsi.cameraroll;
 
-import android.graphics.Bitmap;
-
-import java.util.Map;
-
 class ParsedDataUrl {
 
   static final String MIME_JPEG = "image/jpeg";
   static final String MIME_PNG = "image/png";
 
-  final Map<String, Bitmap.CompressFormat> typeToCompressFormat;
-
   final String data;
   final String mimeType;
 
-  ParsedDataUrl(String url, Map<String, Bitmap.CompressFormat> typeToCompressFormat) throws Throwable{
-    this.typeToCompressFormat = typeToCompressFormat;
+  ParsedDataUrl(String url) throws Throwable{
+    ArgChecks.requireNonNull(url, "url");
 
     String[] chunks = url.split(",");
 
@@ -40,9 +34,5 @@ class ParsedDataUrl {
 
   String getFileExtension() {
     return mimeType.split("/")[1];
-  }
-
-  Bitmap.CompressFormat getCompressFormat() {
-    return typeToCompressFormat.get(mimeType.substring("image/".length()));
   }
 }

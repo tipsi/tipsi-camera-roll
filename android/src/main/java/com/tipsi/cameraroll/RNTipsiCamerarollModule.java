@@ -60,11 +60,11 @@ public class RNTipsiCamerarollModule extends ReactContextBaseJavaModule {
 
   void saveToCameraRollImpl(final String url, final String album, final Promise promise) {
     requireNonNull(url, "url");
-    requireNonNull(album, "title");
+    requireNonNull(album, "album");
 
     ParsedDataUrl dataUrl = null;
     try {
-      dataUrl = new ParsedDataUrl(url, typeToCompressFormat);
+      dataUrl = new ParsedDataUrl(url);
     } catch (Throwable t) {
       // ignore
     }
@@ -84,7 +84,7 @@ public class RNTipsiCamerarollModule extends ReactContextBaseJavaModule {
           album,
           getFileNameByUrl(dataUrl),
           readBase64Bitmap(dataUrl.data),
-          dataUrl.getCompressFormat()
+          typeToCompressFormat.get(dataUrl.getFileExtension())
         );
       }
 
@@ -94,17 +94,19 @@ public class RNTipsiCamerarollModule extends ReactContextBaseJavaModule {
     }
   }
 
-  private static String getFileExtensionUrl(String url) {
+  private static String getFileExtensionByUrl(String url) {
     int dotPosition = url.lastIndexOf('.');
     ArgChecks.require(dotPosition != -1, "dot should exist");
 
-    return url.substring(dotPosition + 1, url.length() );
+    return url.substring(dotPosition + 1);
   }
 
   private static String getFileNameByUrl(String url) {
-    String fileName = url.substring( url.lastIndexOf('/') + 1, url.length() );
+    String fileName = url.substring(url.lastIndexOf('/') + 1);
+    int dotPosition = fileName.lastIndexOf('.');
+    ArgChecks.require(dotPosition != -1, "dot should exist");
 
-    return fileName.substring(0, fileName.lastIndexOf('.'));
+    return fileName.substring(0, dotPosition);
   }
 
   private static String getFileNameByUrl(ParsedDataUrl url) {
@@ -116,11 +118,11 @@ public class RNTipsiCamerarollModule extends ReactContextBaseJavaModule {
   }
 
   private static String getUnixTimestampString() {
-    return String.format("%s", System.currentTimeMillis());
+    return String.format("%l", System.currentTimeMillis());
   }
 
   private static Bitmap.CompressFormat getCompressFormatByUri(String url) {
-    String extension = getFileExtensionUrl(url);
+    String extension = getFileExtensionByUrl(url);
 
     Bitmap.CompressFormat compressFormat = typeToCompressFormat.get(extension);
     ArgChecks.requireNonNull(compressFormat, "format should be known");
