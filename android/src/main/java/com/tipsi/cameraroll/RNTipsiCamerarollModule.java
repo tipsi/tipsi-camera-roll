@@ -75,14 +75,14 @@ public class RNTipsiCamerarollModule extends ReactContextBaseJavaModule {
       if (!isDataUrl) {
         writeBitmapToFolder(
           album,
-          getFileNameByUrl(url),
+          String.format("%s.%s", getFileNameByUrl(url), getFileExtensionByUrl(url)),
           ImageLoader.getInstance().loadImageSync(url),
           getCompressFormatByUri(url)
         );
       } else {
         writeBitmapToFolder(
           album,
-          getFileNameByUrl(dataUrl),
+          String.format("%s.%s", getUnixTimestampString(), dataUrl.getFileExtension()),
           readBase64Bitmap(dataUrl.data),
           typeToCompressFormat.get(dataUrl.getFileExtension())
         );
@@ -109,16 +109,8 @@ public class RNTipsiCamerarollModule extends ReactContextBaseJavaModule {
     return fileName.substring(0, dotPosition);
   }
 
-  private static String getFileNameByUrl(ParsedDataUrl url) {
-    return String.format(
-      "%s.%s",
-      getUnixTimestampString(),
-      url.getFileExtension()
-     );
-  }
-
   private static String getUnixTimestampString() {
-    return String.format("%l", System.currentTimeMillis());
+    return String.format("%d", System.currentTimeMillis());
   }
 
   private static Bitmap.CompressFormat getCompressFormatByUri(String url) {
@@ -165,7 +157,6 @@ public class RNTipsiCamerarollModule extends ReactContextBaseJavaModule {
       .diskCacheExtraOptions(MAX_IMAGE_SIDE_PIXELS, MAX_IMAGE_SIDE_PIXELS, null)
       .diskCacheSize(8 * 1024 * 1024)
       .diskCacheFileCount(20)
-      //.writeDebugLogs()
       .build();
 
     ImageLoader.getInstance().init(config);
