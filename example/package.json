@@ -7,9 +7,11 @@
     "appium": "appium",
     "build:android": "scripts/build-android.sh",
     "build:ios": "scripts/build-ios.sh",
-    "test:android": "TEST_SUITE=android appium-helper --platform android",
+    "test:android": "TEST_SUITE=android appium-helper --platform android --glob ./__tests__/*.test.js",
     "test:ios": "TEST_SUITE=ios appium-helper --platform ios --glob ./__tests__/*.test.js",
-    "test": "jest"
+    "test": "jest",
+    "run-emulator:android": "scripts/run-android-emulator.sh",
+    "kill-emulator:android": "scripts/kill-android-emulator.sh"
   },
   "dependencies": {
     "react": "16.3.1",

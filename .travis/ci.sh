@@ -8,8 +8,10 @@ case "${TRAVIS_OS_NAME}" in
     npm run test:ios
   ;;
   linux)
+    npm run run-emulator:android
     npm run configure:android
     npm run build:android
     npm run test:android
+    npm run kill-emulator:android
   ;;
 esac

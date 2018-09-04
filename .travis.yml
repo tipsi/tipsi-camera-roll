@@ -3,6 +3,21 @@ matrix:
     - os: osx
       language: objective-c
       osx_image: xcode9.3
+    - os: linux
+      language: android
+      jdk: oraclejdk8
+      sudo: required
+      android:
+        components:
+          - platform-tools
+          - tools
+          - build-tools-26.0.3
+          - android-21
+          - android-26
+          - sys-img-armeabi-v7a-android-21
+          - extra-android-m2repository
+          - extra-google-m2repository
+          - extra-google-google_play_services
 cache:
   directories:
     - $HOME/.nvm
