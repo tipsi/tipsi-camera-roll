@@ -24,6 +24,9 @@ cache:
     - $HOME/.npm
     - $HOME/.cocoapods
 
+addons:
+  ssh_known_hosts: git.gettipsi.com
+
 before_cache: .travis/before-cache.sh
 before_install: . .travis/before-install.sh
 install: .travis/install.sh
