@@ -21,7 +21,7 @@ test('Test save image', async (t) => {
 	await driver.click(saveFromUrlId)
 	t.pass('User should be able click on `Save from URL` button')
 
-  if (platform("ios")) {
+  if (platform('ios')) {
     await driver.waitForVisible(allowId, 10000)
     await driver.click(allowId)
     t.pass('User should be able agree to use Photo library')
