@@ -3,7 +3,6 @@
 # kill current emulator
 npm run kill-emulator:android
 
-# TODO: add emulator creation
 # get emulator name
 echo "All available devices:"
 emulator -list-avds
@@ -12,11 +11,11 @@ emulatorId=$(emulator -list-avds | grep 22 | head -n1)
 if [[ -z "$emulatorId" ]]; then
   echo "There is no available devices"
   echo "Downloading from github"
-  git clone git@git.gettipsi.com:tipsi_frontend/tipsi.git
+  git clone git@github.com:tipsi/avd.git
 
   # unzip into folder
-  unzip ./android-ci-docker/avd.zip -d ~/.android/
-  rm -rf ./android-ci-docker
+  unzip ./avd/avd.zip -d ~/.android/
+  rm -rf ./avd
   emulatorId="tipsi-android-5.1.1-22"
 fi
 wait

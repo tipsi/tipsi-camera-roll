@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "preinstall": "node scripts/pre-install.js",
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "appium": "appium",
     "build:android": "scripts/build-android.sh",
@@ -11,13 +12,14 @@
     "test:ios": "TEST_SUITE=ios appium-helper --platform ios --glob ./__tests__/*.test.js",
     "test": "jest",
     "run-emulator:android": "scripts/run-android-emulator.sh",
-    "kill-emulator:android": "scripts/kill-android-emulator.sh"
+    "kill-emulator:android": "scripts/kill-android-emulator.sh",
+    "test:local-e2e": "OS=both scripts/run-local-tests.sh"
   },
   "dependencies": {
     "react": "16.3.1",
     "react-native": "0.55.4",
     "react-native-fs": "^2.9.12",
-    "tipsi-camera-roll": "file:../"
+    "tipsi-camera-roll": "file:../tipsi-camera-roll-latest.tgz"
   },
   "devDependencies": {
     "babel-jest": "22.4.4",

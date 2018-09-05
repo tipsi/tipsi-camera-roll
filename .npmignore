@@ -1,5 +1,11 @@
+*~
+Makefile
+*.tgz
 .babelrc
-.eslintrc
-.travis
+.editorconfig
+.eslintrc.js
 .travis.yml
+.travis
 example
+scripts
+__tests__

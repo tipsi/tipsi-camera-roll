@@ -18,14 +18,6 @@ matrix:
           - extra-android-m2repository
           - extra-google-m2repository
           - extra-google-google_play_services
-cache:
-  directories:
-    - $HOME/.nvm
-    - $HOME/.npm
-    - $HOME/.cocoapods
-
-addons:
-  ssh_known_hosts: git.gettipsi.com
 
 before_cache: .travis/before-cache.sh
 before_install: . .travis/before-install.sh
