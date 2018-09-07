@@ -17,6 +17,6 @@
     "react-native": "*"
   },
   "devDependencies": {
-    "tipsi-travis-scripts": "isnifer/tipsi-travis-scripts#7f6d309"
+    "tipsi-travis-scripts": "isnifer/tipsi-travis-scripts#9c8789e"
   }
 }
