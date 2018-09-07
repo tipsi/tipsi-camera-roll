@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "ci": "scripts/local-ci.sh"
+    "ci": "scripts/local-ci.sh",
+    "next-ci": "node -r esm ./node_modules/tipsi-travis-scripts/scripts/ci.js"
   },
   "keywords": [
     "react-native"
@@ -14,5 +15,8 @@
   "license": "",
   "peerDependencies": {
     "react-native": "*"
+  },
+  "devDependencies": {
+    "tipsi-travis-scripts": "isnifer/tipsi-travis-scripts#7f6d309"
   }
 }
