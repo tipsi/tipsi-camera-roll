@@ -1,5 +1,5 @@
-import { NativeModules } from 'react-native';
+import { NativeModules } from 'react-native'
 
-const { CameraRoll } = NativeModules;
+const { CameraRoll } = NativeModules
 
-export default CameraRoll;
+export default CameraRoll
