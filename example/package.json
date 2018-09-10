@@ -7,11 +7,11 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "cold-start": "npm start -- --reset-cache",
     "test:android": "appium-helper --platform android",
-    "test:ios": "appium-helper --platform ios",
+    "test:ios": "appium-helper --platform ios"
   },
   "dependencies": {
     "react": "16.4.2",
-    "react-native": "0.55.4",
+    "react-native": "0.48.4",
     "react-native-fs": "2.11.15",
     "tipsi-camera-roll": "file:../tipsi-camera-roll-latest.tgz"
   },

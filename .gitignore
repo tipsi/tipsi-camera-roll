@@ -79,3 +79,5 @@ example_podspec
 *.tgz
 
 example/package-lock.json
+
+*.log

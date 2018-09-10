@@ -7,5 +7,7 @@ Makefile
 .travis.yml
 .travis
 example
+example_tmp
+example_podspec
 scripts
 __tests__

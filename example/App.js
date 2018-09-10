@@ -8,7 +8,7 @@ import {
 } from 'react-native'
 import CameraRoll from 'tipsi-camera-roll'
 import RNFS from 'react-native-fs'
-import testID from './utils/testID'
+import testID from './src/utils/testID'
 
 const IMAGE_URL = 'https://strv.ghost.io//content/images/2016/08/1200x628.png'
 

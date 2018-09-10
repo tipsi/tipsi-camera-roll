@@ -4,7 +4,7 @@
   "description": "Camera Roll module for React-Native",
   "main": "index.js",
   "scripts": {
-    "ci": "scripts/local-ci.sh",
+    "ci": "rm -rf node_modules; npm i; node -r esm node_modules/tipsi-travis-scripts/scripts/ci.js",
     "lint": "eslint '*.js' 'example/*.js' 'example/**/*.js'"
   },
   "repository": {
@@ -22,15 +22,12 @@
     "url": "https://github.com/tipsi/tipsi-camera-roll/issues"
   },
   "homepage": "https://github.com/tipsi/tipsi-camera-roll#readme",
-  "peerDependencies": {
-    "react-native": "*"
-  },
   "eslintConfig": {
     "extends": "tipsi"
   },
   "devDependencies": {
     "eslint": "5.5.0",
     "eslint-config-tipsi": "2.1.1",
-    "tipsi-travis-scripts": "isnifer/tipsi-travis-scripts#3a1a726"
+    "tipsi-travis-scripts": "isnifer/tipsi-travis-scripts#da71fee"
   }
 }
