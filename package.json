@@ -28,6 +28,6 @@
   "devDependencies": {
     "eslint": "5.5.0",
     "eslint-config-tipsi": "2.1.1",
-    "tipsi-travis-scripts": "isnifer/tipsi-travis-scripts#2e12abd"
+    "tipsi-travis-scripts": "isnifer/tipsi-travis-scripts#9210867"
   }
 }
