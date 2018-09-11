@@ -10,4 +10,6 @@ export default {
     ios: 'iPhone 6',
     android: 'zzz_nexus_6p_api_21',
   },
+
+  androidEmulatorNeedsWritableStorage: true,
 }

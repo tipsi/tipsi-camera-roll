@@ -1,16 +1,10 @@
 import React, { Component } from 'react'
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TouchableHighlight,
-} from 'react-native'
+import { StyleSheet, Text, View, Image, TouchableHighlight } from 'react-native'
 import CameraRoll from 'tipsi-camera-roll'
 import RNFS from 'react-native-fs'
 import testID from './src/utils/testID'
 
-const IMAGE_URL = 'https://strv.ghost.io//content/images/2016/08/1200x628.png'
+const IMAGE_URL = 'https://strv.ghost.io/content/images/2016/08/1200x628.png'
 
 export default class App extends Component {
   state = {
@@ -73,7 +67,7 @@ export default class App extends Component {
       .then(() => {
         RNFS.readFile(filePath, 'base64')
           .then((base64) => {
-            const uri = `data:image/jpegbase64,${base64}`
+            const uri = `data:image/jpeg;base64,${base64}`
             CameraRoll.saveToCameraRoll(uri, 'Base64')
               .then(() => {
                 this.setState({ saved: true })
