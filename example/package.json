@@ -1,33 +1,26 @@
 {
   "name": "example",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
+    "preinstall": "node scripts/pre-install.js",
     "start": "node node_modules/react-native/local-cli/cli.js start",
-    "appium": "appium",
-    "build:android": "scripts/build-android.sh",
-    "build:ios": "scripts/build-ios.sh",
-    "test:android": "TEST_SUITE=android appium-helper --platform android",
-    "test:ios": "TEST_SUITE=ios appium-helper --platform ios --glob ./__tests__/*.test.js",
-    "test": "jest"
+    "cold-start": "npm start -- --reset-cache",
+    "test:android": "appium-helper --platform android",
+    "test:ios": "appium-helper --platform ios"
   },
   "dependencies": {
-    "react": "16.3.1",
-    "react-native": "0.55.4",
-    "react-native-fs": "^2.9.12",
-    "tipsi-camera-roll": "file:../"
+    "react": "16.4.2",
+    "react-native": "0.48.4",
+    "react-native-fs": "2.11.15",
+    "tipsi-camera-roll": "file:../tipsi-camera-roll-latest.tgz"
   },
   "devDependencies": {
-    "babel-jest": "22.4.4",
     "babel-preset-react-native": "4.0.0",
-    "jest": "22.4.4",
     "appium": "1.8.0",
-    "tape-async": "^2.1.1",
-    "tipsi-appium-helper": "2.0.0",
+    "tape-async": "2.1.1",
+    "tipsi-appium-helper": "2.1.3",
     "webdriverio": "4.7.1",
-    "react-test-renderer": "16.3.1"
-  },
-  "jest": {
-    "preset": "react-native"
+    "react-test-renderer": "16.4.2"
   }
 }

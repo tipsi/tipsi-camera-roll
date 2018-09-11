@@ -1,5 +1,13 @@
+*~
+Makefile
+*.tgz
 .babelrc
-.eslintrc
-.travis
+.editorconfig
+.eslintrc.js
 .travis.yml
+.travis
 example
+example_tmp
+example_podspec
+scripts
+__tests__

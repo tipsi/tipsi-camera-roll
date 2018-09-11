@@ -3,12 +3,12 @@ package com.example;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import com.rnfs.RNFSPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 import com.tipsi.cameraroll.RNTipsiCamerarollPackage;
+import com.rnfs.RNFSPackage;
 import java.util.Arrays;
 import java.util.List;
 
@@ -27,11 +27,6 @@ public class MainApplication extends Application implements ReactApplication {
           new RNTipsiCamerarollPackage(),
           new RNFSPackage()
       );
-    }
-
-    @Override
-    protected String getJSMainModuleName() {
-      return "index";
     }
   };
 

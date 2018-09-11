@@ -1,26 +1,12 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+import React, { Component } from 'react'
+import { StyleSheet, Text, View, Image, TouchableHighlight } from 'react-native'
+import CameraRoll from 'tipsi-camera-roll'
+import RNFS from 'react-native-fs'
+import testID from './src/utils/testID'
 
-import React, { Component } from 'react';
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TouchableHighlight,
-} from 'react-native';
-import CameraRoll from 'tipsi-camera-roll';
-import RNFS from 'react-native-fs';
-import testID from './utils/testID'
+const IMAGE_URL = 'https://strv.ghost.io/content/images/2016/08/1200x628.png'
 
-const IMAGE_URL = 'https://strv.ghost.io//content/images/2016/08/1200x628.png'
-
-type Props = {};
-export default class App extends Component<Props> {
+export default class App extends Component {
   state = {
     saved: false,
     error: null,
@@ -36,66 +22,73 @@ export default class App extends Component<Props> {
   saveFromUrlHandler = () => {
     this.resetState()
     CameraRoll.saveToCameraRoll(IMAGE_URL, 'tipsi')
-      .then(r => {
+      .then(() => {
         this.setState({ saved: true })
       })
       .catch((error) => {
-        this.setState({ error })
+        this.setState({ error: error.message })
       })
   }
 
   saveFromPathHandler = () => {
     this.resetState()
     const filePath = `${RNFS.DocumentDirectoryPath}/test.jpg`
-      const options = {
-          fromUrl: IMAGE_URL,
-          toFile: filePath,
-          background: true
-      };
-      RNFS.downloadFile(options).promise
-          .then((result) => {
-            CameraRoll.saveToCameraRoll(IMAGE_URL, 'Path')
-            .then(r => {
-              this.setState({ saved: true })
-            })
-            .catch((error) => {
-              this.setState({ error })
-            })
+    const options = {
+      fromUrl: IMAGE_URL,
+      toFile: filePath,
+      background: true,
+    }
+
+    RNFS.downloadFile(options).promise
+      .then(() => {
+        CameraRoll.saveToCameraRoll(IMAGE_URL, 'Path')
+          .then(() => {
+            this.setState({ saved: true })
           })
-          .catch((error) => { this.setState({ error }) })
+          .catch((error) => {
+            this.setState({ error: error.message })
+          })
+      })
+      .catch((error) => {
+        this.setState({ error: error.message })
+      })
   }
 
   saveBase64Handler = () => {
     this.resetState()
     const filePath = `${RNFS.DocumentDirectoryPath}/test.jpg`
     const options = {
-        fromUrl: IMAGE_URL,
-        toFile: filePath,
-        background: true
-    };
+      fromUrl: IMAGE_URL,
+      toFile: filePath,
+      background: true,
+    }
+
     RNFS.downloadFile(options).promise
-        .then((result) => {
-          RNFS.readFile(filePath, 'base64')
+      .then(() => {
+        RNFS.readFile(filePath, 'base64')
           .then((base64) => {
             const uri = `data:image/jpeg;base64,${base64}`
             CameraRoll.saveToCameraRoll(uri, 'Base64')
-            .then(r => {
-              this.setState({ saved: true })
-            })
-            .catch((error) => {
-              this.setState({ error })
-            })
+              .then(() => {
+                this.setState({ saved: true })
+              })
+              .catch((error) => {
+                this.setState({ error: error.message })
+              })
           })
-        })
-        .catch((error) => { this.setState({ error }) })
+      })
+      .catch((error) => {
+        this.setState({ error: error.message })
+      })
   }
 
   render() {
     return (
       <View style={styles.container}>
         <Image
-          source={{uri: IMAGE_URL}}
-          style={{width: 400, height: 300}} />
+          source={{ uri: IMAGE_URL }}
+          style={styles.image}
+        />
         <TouchableHighlight onPress={this.saveFromUrlHandler} {...testID('saveFromUrl')}>
           <View style={styles.button}>
             <Text>Save from URL</Text>
@@ -116,7 +109,7 @@ export default class App extends Component<Props> {
         {this.state.error &&
           <View style={styles.error}><Text>{this.state.error}</Text></View>}
       </View>
-    );
+    )
   }
 }
 
@@ -143,4 +136,8 @@ const styles = StyleSheet.create({
     marginTop: 15,
     backgroundColor: 'red',
   },
-});
+  image: {
+    width: 200,
+    height: 100,
+  },
+})
